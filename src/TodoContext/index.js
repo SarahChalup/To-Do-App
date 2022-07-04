@@ -58,6 +58,17 @@ function TodoProvider(props) {
         saveTodos(newTodos);
     };
 
+    //Añadir todo
+    const addTodo = (text) => {
+        const newTodos = [...todos];
+        newTodos.push({
+            completed: false,
+            text,
+        });
+        //actualizar estado
+        saveTodos(newTodos);
+    }
+
     console.log("render antes de use effect")
     //efectos
     React.useEffect(() => {
@@ -76,6 +87,7 @@ function TodoProvider(props) {
             searchedTodo,
             completeTodo,
             deleteTodo,
+            addTodo,
             openModal,
             setOpenModal,
         }}>
