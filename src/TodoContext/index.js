@@ -69,10 +69,8 @@ function TodoProvider(props) {
         saveTodos(newTodos);
     }
 
-    console.log("render antes de use effect")
     //efectos
     React.useEffect(() => {
-        console.log("use effect");
     }, [totalTodo]);
 
 
