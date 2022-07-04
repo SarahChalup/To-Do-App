@@ -5,7 +5,8 @@ import { TodoSearch } from "../TodoSearch";
 import { TodoList } from "../TodoList";
 import { ToDoItem } from "../TodoItem";
 import { CreateTodoButton } from "../CreateTodoButton";
-import { TodoContext } from "../TodoContext"
+import { TodoContext } from "../TodoContext";
+import {Modal} from "../Modal";
 
 function AppUI() {
   const {
@@ -15,7 +16,8 @@ function AppUI() {
     completeTodo,
     deleteTodo,
     totalTodo,
-
+    openModal,
+    setOpenModal,
   } = React.useContext(TodoContext);
 
   return (
@@ -39,8 +41,17 @@ function AppUI() {
             onDelete={() => deleteTodo(todo.text)} />
         ))}
       </TodoList>
+  
+          {/* Preguntar si es que openModal es true */}
+      {  !!openModal && (
+           <Modal>
+            <p>{searchedTodo[0]?.text}</p>
+          </Modal>
+        )}
 
-      <CreateTodoButton />
+      <CreateTodoButton setOpenModal= {setOpenModal} />
+      
+     
 
     </React.Fragment>
   );

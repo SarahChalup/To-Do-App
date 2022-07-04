@@ -13,9 +13,10 @@ function TodoProvider(props) {
         loading,
         error
     } = useLocalStorage('TODOS_V1', []);
-    const [searchValue, setSearchValue] = React.useState('');
 
-    //variables del contador
+    //----------ESTADOS------------
+    const [openModal, setOpenModal] = React.useState(false);
+    const [searchValue, setSearchValue] = React.useState('');
     //filtrando los todo para ver cuales son verdaderos     !!devulve falso si es falso
     const completedTodo = todos.filter(todo => !!todo.completed).length;
     const totalTodo = todos.length;
@@ -75,6 +76,8 @@ function TodoProvider(props) {
             searchedTodo,
             completeTodo,
             deleteTodo,
+            openModal,
+            setOpenModal,
         }}>
             {props.children}
         </TodoContext.Provider>
