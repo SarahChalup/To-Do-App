@@ -1,10 +1,9 @@
 import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
-const TodoContext = React.createContext();
 
-//atajo del proveedor
-function TodoProvider(props) {
+
+function useTodos() {
 
     //Estados
     const {
@@ -74,8 +73,7 @@ function TodoProvider(props) {
     }, [totalTodo]);
 
 
-    return (
-        <TodoContext.Provider value={{
+    return {
             loading,
             error,
             totalTodo,
@@ -88,10 +86,7 @@ function TodoProvider(props) {
             addTodo,
             openModal,
             setOpenModal,
-        }}>
-            {props.children}
-        </TodoContext.Provider>
-    )
+    }
 }
 
-export { TodoContext, TodoProvider };
+export { useTodos };
