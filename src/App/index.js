@@ -42,36 +42,33 @@ function App() {
         loading = {loading}
         totalTodo = {totalTodo}
         searchedTodo = {searchedTodo}
+        searchText = {searchValue}
         onError = {()=><p>Existe un error D:</p>}
         onLoading = {()=> <p>Estamos Cargando...</p>}
         onEmptyTodo = {() =><p>Crea tu primer To Do!</p>}
-        onEmptySearchResult = {() =><p>Lo siento, no hay coincidencias con la búsqueda</p>}
-        render = {todo => (
-          // Estos elementos se colocan dentro de props en React
-          <ToDoItem
-            key={todo.text}
-            text={todo.text}
-            completed={todo.completed}
-            onComplete={() => completeTodo(todo.text)}
-            onDelete={() => deleteTodo(todo.text)} />
-        )}
-        />
+        onEmptySearchResult = {(searchText) =><p>Lo siento, no hay coincidencias con {searchText}</p>}
+        
+        // render = {todo => (
+        //   // Estos elementos se colocan dentro de props en React
+        //   <ToDoItem
+        //     key={todo.text}
+        //     text={todo.text}
+        //     completed={todo.completed}
+        //     onComplete={() => completeTodo(todo.text)}
+        //     onDelete={() => deleteTodo(todo.text)} />
+        // )}
+        // />
+        >
+          {todo => (
+            <ToDoItem
+                key={todo.text}
+                text={todo.text}
+                completed={todo.completed}
+                onComplete={() => completeTodo(todo.text)}
+                onDelete={() => deleteTodo(todo.text)} />
+          )}
+        </TodoList>
 
-      {/* <TodoList>
-        {error && <p>Existe un error D:</p>}
-        {loading && <p>Estamos Cargando...</p>}
-        {(!loading && !totalTodo) && <p>Crea tu primer To Do!</p>}
-
-        {searchedTodo.map(todo => (
-          // Estos elementos se colocan dentro de props en React
-          <ToDoItem
-            key={todo.text}
-            text={todo.text}
-            completed={todo.completed}
-            onComplete={() => completeTodo(todo.text)}
-            onDelete={() => deleteTodo(todo.text)} />
-        ))}
-      </TodoList> */}
   
           {/* Preguntar si es que openModal es true */}
       {  !!openModal && (
