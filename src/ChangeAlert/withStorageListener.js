@@ -9,10 +9,18 @@ function withStorageListener(WrappedComponent){
                 setStorageChange(true)
             }
         })
+
+        //toggleShow significa accionar el mostrar
+        const toggleShow = () => {
+            props.syncronize();
+            setStorageChange(false)
+        }
+
+
         return( 
             <WrappedComponent 
                 show={storageChange} 
-                toggleShow={setStorageChange}
+                toggleShow={toggleShow}
             />
         )
     }

@@ -2,6 +2,8 @@ import React from "react";
 
 //Creando un customHoock
 function useLocalStorage(itemName, initialValue) {
+    //estado para sincronizar la página
+    const [syncronizedItem, setSyncronizedItem] = React.useState(true);
     //estado de error
     const [error, setError] = React.useState(false);
     //estado de carga
@@ -27,11 +29,12 @@ function useLocalStorage(itemName, initialValue) {
   
             setItem(parsedItem);
             setLoading(false);
+            setSyncronizedItem(true);
         } catch(error){
             setError(error);
         } 
       }, 3000)
-    }, [])
+    }, [syncronizedItem])
   
     // Actualizamos la función para guardar nuestro item con las nuevas variables y parámetros
   const saveItem = (newItem) => {
@@ -44,6 +47,12 @@ function useLocalStorage(itemName, initialValue) {
     }
   
     };
+
+    //función que coloca la aplicación en estado de carga y luego la vuelve a renderizar con la propiedad syncronized
+  const syncronizeItem = () => {
+    setLoading(true);
+    setSyncronizedItem(false)
+  }
   
     // Regresamos los datos que necesitamos
   return {
@@ -51,6 +60,7 @@ function useLocalStorage(itemName, initialValue) {
       saveItem,
       loading,
       error,
+      syncronizeItem
   };
   }
 

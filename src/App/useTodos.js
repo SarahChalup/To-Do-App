@@ -10,7 +10,8 @@ function useTodos() {
         item: todos,
         saveItem: saveTodos,
         loading,
-        error
+        error,
+        syncronizeItem: syncronizeTodos,
     } = useLocalStorage('TODOS_V1', []);
 
     //----------ESTADOS------------
@@ -86,6 +87,7 @@ function useTodos() {
             addTodo,
             openModal,
             setOpenModal,
+            syncronizeTodos,
     }
 }
 
