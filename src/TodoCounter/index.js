@@ -4,10 +4,13 @@ import "./TodoCounter.css";
 function TodoCounter({
     totalTodo, 
     completedTodo,
+    loading
 } ){
 
     return (
-        <h2 className="TodoCounter">He completado {completedTodo} de {totalTodo} To Do's</h2>
+        <h2 className={`TodoCounter ${!!loading && "TodoCounter--loading" }` }>
+        He completado {completedTodo} de {totalTodo} To Do
+        </h2>
     );
 }
 //para exportar el componente

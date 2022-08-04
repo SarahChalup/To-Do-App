@@ -1,7 +1,7 @@
 import React from "react";
 import "./todoSearch.css";
 
-function TodoSearch({ searchValue, setSearchValue}){
+function TodoSearch({ searchValue, setSearchValue, loading}){
  
     //event es una propiedad propia de react, en ningun lado la estoy enviando
     const onSearchValueChange = (event) =>{
@@ -14,7 +14,8 @@ function TodoSearch({ searchValue, setSearchValue}){
             placeholder="Busca tu tarea..." 
             className="TodoSearch"
             value={searchValue}
-            onChange={onSearchValueChange}/>
+            onChange={onSearchValueChange}
+            disabled={loading}/>
     );
 }
 //para exportar el componente
